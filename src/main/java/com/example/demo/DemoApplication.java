@@ -22,7 +22,7 @@ public class DemoApplication extends SpringBootServletInitializer {
 	
 	@RequestMapping(value = "/")
 	public String hello() {
-		return "Hello World!";
+		return "Hello there";
 	}
 
 }
