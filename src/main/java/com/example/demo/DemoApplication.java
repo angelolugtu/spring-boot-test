@@ -24,5 +24,10 @@ public class DemoApplication extends SpringBootServletInitializer {
 	public String hello() {
 		return "Hello there";
 	}
+	
+	@RequestMapping(value = "/second")
+	public String testFunc() {
+		return "Hi";
+	}
 
 }
