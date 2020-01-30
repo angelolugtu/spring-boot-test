@@ -1,8 +1,5 @@
 pipeline {
 	agent any
-	docker.withRegistry('https://hub.docker.com/', 'docker-login') {
-         docker.build('luinabaro/spring-boot-test:${BUILD_NUMBER}').push('latest')
-       }
 
 	stages {
 		stage('Clone') {
@@ -17,6 +14,12 @@ pipeline {
 				}
 				echo 'Success'
 			}
+		}
+
+		stage('Buld Image') {
+			docker.withRegistry('https://hub.docker.com/', 'docker-login') {
+         docker.build('luinabaro/spring-boot-test:${BUILD_NUMBER}').push('latest')
+     }
 		}
 }
 }
