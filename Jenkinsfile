@@ -1,5 +1,6 @@
 pipeline {
 	agent any
+	def app = docker.build("")
 	
 	stages {
 		stage('Clone') {
@@ -7,13 +8,21 @@ pipeline {
 				checkout scm
 			}		
 		}
-		stage('Build') {
+		stage('Build War File') {
 			steps {
 				withMaven(maven: 'apache-maven-3.6.3') {
 					sh 'mvn clean package'
 				}
 				echo 'Success'
 			}
-		}	
+		}
+
+		stage('Build Image') {
+            steps {
+                docker.withRegistry('https://hub.docker.com/', 'docker-login') {
+                    docker.build('luinabaro/spring-boot-test:${BUILD_NUMBER}').push('latest')
+                }
+            }
+		}
 	}
 }
