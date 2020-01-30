@@ -18,7 +18,7 @@ pipeline {
 
 		stage('Buld Image') {
 			steps{
-				scripts {
+				script {
 					docker.withRegistry('https://hub.docker.com/', 'docker-login') {
          				docker.build('luinabaro/spring-boot-test:${BUILD_NUMBER}').push('latest')
      				}
