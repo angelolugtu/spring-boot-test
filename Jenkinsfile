@@ -1,6 +1,10 @@
 pipeline {
 	agent any
 	
+	tools {
+		maven: 'MAVEN_HOME'
+	}
+	
 	stages {
 		stage('Clone') {
 			steps {
@@ -9,9 +13,7 @@ pipeline {
 		}
 		stage('Build') {
 			steps {
-				withMaven(maven: 'MAVEN_HOME') {
-					sh 'mvn clean package'
-				}
+				sh 'mvn clean package'
 				echo 'Success'
 			}
 		}	
