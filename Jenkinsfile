@@ -1,6 +1,5 @@
 pipeline {
 	agent any
-	def app = docker.build("")
 	
 	stages {
 		stage('Clone') {
@@ -18,8 +17,10 @@ pipeline {
 		}
 
 		stage('Build Image') {
-                docker.withRegistry('https://hub.docker.com/', 'docker-login') {
-                    docker.build('luinabaro/spring-boot-test:${BUILD_NUMBER}').push('latest')
+		steps {
+		docker.withRegistry('https://hub.docker.com/', 'docker-login') {
+                            docker.build('luinabaro/spring-boot-test:${BUILD_NUMBER}').push('latest')
+		}
             }
 		}
 	}
