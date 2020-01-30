@@ -1,8 +1,5 @@
 pipeline {
-	agent { dockerfile {
-	    filename: 'Dockerfile'
-	    args: '--privileged'
-	}}
+	agent any
 
 	stages {
 		stage('Clone') {
