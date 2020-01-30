@@ -9,7 +9,7 @@ pipeline {
 		}
 		stage('Build War File') {
 			steps {
-				withMaven(maven: 'apache-maven-3.6.3') {
+				withMaven(maven: 'MAVEN_HOME') {
 					sh 'mvn clean package'
 				}
 				echo 'Success'
