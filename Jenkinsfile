@@ -9,7 +9,7 @@ pipeline {
 		}
 		stage('Build') {
 			steps {
-				withMaven(maven: 'MAVEN_HOME') {
+				withMaven(maven: 'apache-maven-3.6.3') {
 					bat 'mvn clean package'
 				}
 				echo 'Success'
