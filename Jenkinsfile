@@ -1,6 +1,6 @@
 pipeline {
 	environment {
-    registry = "luinabaro/docker-test"
+    registry = "luinabaro/spring-boot-test"
     registryCredential = 'docker-login'
     dockerImage = ''
   }
