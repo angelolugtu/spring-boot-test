@@ -19,7 +19,7 @@ pipeline {
 		stage('Build Image') {
 			steps {
 				script {
-						docker.withRegistry('https://hub.docker.com/', 'docker-login') {
+						docker.withRegistry('', 'docker-login') {
 							def customImage = docker.build("luinabaro/spring-boot-test:${env.BUILD_ID}")
 							customImage.push()
      					}
