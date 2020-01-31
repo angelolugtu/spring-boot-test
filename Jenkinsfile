@@ -8,12 +8,11 @@ pipeline {
 			}		
 		}
 		stage('Build War File') {
-			agent {
-                docker { image 'maven:3-alpine' }
-            }
 			steps {
-				sh 'mvn clean package'
-				echo 'Success'
+				withMaven(maven: 'MAVEN_HOME'){
+					sh 'mvn clean package'
+					echo 'Success'
+				}
 			}
 		}
 
