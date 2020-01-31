@@ -17,15 +17,13 @@ pipeline {
 			}
 		}
 
-		stage('Buld Image') {
+		stage('Build Image') {
 			steps {
 				script {
-					docker.withTool('docker') {
 						docker.withRegistry('https://hub.docker.com/', 'docker-login') {
 							def customImage = docker.build("luinabaro/spring-boot-test:${env.BUILD_ID}")
 							customImage.push()
      					}
-					}
 					
 				}
 			}
