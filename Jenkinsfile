@@ -1,5 +1,5 @@
 pipeline {
-	agent any
+	agent none
 
 	stages {
 		stage('Clone') {
@@ -8,10 +8,11 @@ pipeline {
 			}		
 		}
 		stage('Build War File') {
+			agent {
+                docker { image 'maven:3-alpine' }
+            }
 			steps {
-				withMaven(maven: 'MAVEN_HOME') {
-					sh 'mvn clean package'
-				}
+				sh 'mvn clean package'
 				echo 'Success'
 			}
 		}
