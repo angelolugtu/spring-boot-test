@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: nrsa-atd-service
+spec:
+  selector:
+    app: nrsa-atd
+    type: backend
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 9080

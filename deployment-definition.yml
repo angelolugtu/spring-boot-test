@@ -1,18 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: spring-boot-test-deployment
+  name: nrsa-atd-deployment
 spec:
   replicas: 3
   template:
     metadata:
-      name: spring-boot-test
+      name: nrsa-atd
       labels:
-        type: spring-boot-api
+        app: nrsa-atd
+        type: backend
     spec:
       containers:
         - name: spring-boot-test
           image: luinabaro/spring-boot-test
   selector:
     matchLabels:
-      type: spring-boot-api
+      app: nrsa-atd
+      type: backend
